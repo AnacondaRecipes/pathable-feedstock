@@ -14,16 +14,15 @@ source:
 
 build:
   number: 0
-  noarch: python
-  script: cd dist && {{ PYTHON }} -m pip install . -vv
+  script: cd dist && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python
     - poetry-core >=1.0.0
   run:
-    - python >=3.7
+    - python
 
 test:
   source_files:
