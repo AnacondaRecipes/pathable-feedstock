@@ -39,7 +39,11 @@ test:
 about:
   home: https://github.com/p1c2u/pathable
   summary: Object-oriented paths
+  description: Object-oriented paths
+  dev_url: https://github.com/p1c2u/pathable
+  doc_url: https://github.com/p1c2u/pathable
   license: Apache-2.0
+  license_family: Apache
   license_file: dist/LICENSE
 
 extra:
