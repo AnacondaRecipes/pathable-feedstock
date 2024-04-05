@@ -14,16 +14,15 @@ source:
 
 build:
   number: 0
-  noarch: python
-  script: cd dist && {{ PYTHON }} -m pip install . -vv
+  script: cd dist && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python
     - poetry-core >=1.0.0
   run:
-    - python >=3.7
+    - python
 
 test:
   source_files:
@@ -40,7 +39,11 @@ test:
 about:
   home: https://github.com/p1c2u/pathable
   summary: Object-oriented paths
+  description: Object-oriented paths
+  dev_url: https://github.com/p1c2u/pathable
+  doc_url: https://github.com/p1c2u/pathable
   license: Apache-2.0
+  license_family: Apache
   license_file: dist/LICENSE
 
 extra:
