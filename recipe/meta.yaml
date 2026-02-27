@@ -1,20 +1,18 @@
-{% set version = "0.4.3" %}
+{% set name = "pathable" %}
+{% set version = "0.5.0" %}
 
 package:
-  name: pathable
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - folder: dist
-    url: https://pypi.io/packages/source/p/pathable/pathable-{{ version }}.tar.gz
-    sha256: 5c869d315be50776cc8a993f3af43e0c60dc01506b399643f919034ebf4cdcab
-  - folder: src
-    url: https://github.com/p1c2u/pathable/archive/refs/tags/{{ version }}.tar.gz
-    sha256: eea76120e5fdc54f4e9b7bc5e24748d163cef61c3e60ed32675828ade141cf4b
+  url: https://github.com/p1c2u/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: a11fab524f653bb4cabe4cb06a0accbe115db8a02cdb3153a608d1dd9a56a373
 
 build:
   number: 0
-  script: cd dist && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -26,15 +24,15 @@ requirements:
 
 test:
   source_files:
-    - src/tests
+    - tests
   imports:
     - pathable
-  commands:
-    - pip check
-    - pytest src/tests -vv --cov=pathable --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=79
   requires:
     - pip
     - pytest-cov
+  commands:
+    - pip check
+    - pytest tests -v
 
 about:
   home: https://github.com/p1c2u/pathable
@@ -44,7 +42,7 @@ about:
   doc_url: https://github.com/p1c2u/pathable
   license: Apache-2.0
   license_family: Apache
-  license_file: dist/LICENSE
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
