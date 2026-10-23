@@ -1,13 +1,13 @@
 {% set name = "pathable" %}
-{% set version = "0.5.0" %}
+{% set version = "0.6.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://github.com/p1c2u/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: a11fab524f653bb4cabe4cb06a0accbe115db8a02cdb3153a608d1dd9a56a373
+  sha256: ee92e59b251ab95f23e2a7f9813c933e6a78c546f00b65b984528dcecbd15b3e
 
 build:
   number: 0
@@ -32,7 +32,7 @@ test:
     - pytest-cov
   commands:
     - pip check
-    - pytest tests -v
+    - pytest -vv tests
 
 about:
   home: https://github.com/p1c2u/pathable
